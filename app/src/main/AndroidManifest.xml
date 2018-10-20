@@ -9,6 +9,7 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -26,22 +27,31 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
             android:parentActivityName=".SearchActivity" />
+
         <activity
             android:name=".SafeHomeDetailsActivity"
             android:label="SafeHomeDetails"
             android:parentActivityName=".MapsActivity" />
+
         <activity android:name=".SearchActivity"></activity>
+
         <activity
             android:name=".AboutAppActivity"
             android:label="@string/title_activity_about_app"></activity>
+
+        <activity android:name=".LoginActivity"
+            android:parentActivityName=".SearchActivity"/>
+
+        <activity android:name=".ReviewActivity"
+            android:parentActivityName=".SearchActivity"/>
     </application>
 
 </manifest>

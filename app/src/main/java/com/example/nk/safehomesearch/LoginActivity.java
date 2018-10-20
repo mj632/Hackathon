@@ -26,18 +26,27 @@ public class LoginActivity extends AppCompatActivity {
         cancelBtn = (Button) findViewById(R.id.cancelBtn);
     }
     public void checkCreds(View v) {
-        if(useraName.getText().toString().equals("admin") &&
+        if (useraName.getText().toString().equals("admin") &&
                 password.getText().toString().equals("admin")) {
-            Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
             Intent backToParentIntent = new Intent();
             backToParentIntent.putExtra("USER_NAME", useraName.getText().toString());
             setResult(RESULT_OK, backToParentIntent);
-            super.onBackPressed();
+            super.finish();
 
-        }else{
-            Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Pressing the back arrow closes the current activity, returning us to the original activity
+        Intent backToParentIntent = new Intent();
+        backToParentIntent.putExtra("USER_NAME", useraName.getText().toString());
+        setResult(RESULT_OK, backToParentIntent);
+        super.onBackPressed();
     }
 
     public void onClickCancel(View v) {

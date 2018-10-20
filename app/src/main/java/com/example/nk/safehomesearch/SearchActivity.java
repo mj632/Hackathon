@@ -11,7 +11,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private static final int MAPS_REQUEST_CODE = 1;
     private static final int LOGIN_REQUEST_CODE = 2;
-    private String username;
+    private String username = "admin";
     private EditText addressBox;
 
     @Override
@@ -36,6 +36,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
 
+
     public void searchInArea(View v) {
         Intent intent = new Intent(SearchActivity.this, MapsActivity.class);
         intent.putExtra("AREA_ZIP_CODE", addressBox.getText());
@@ -49,8 +50,8 @@ public class SearchActivity extends AppCompatActivity {
 
     public void goToReviewPage(View v){
         Intent reviewIntent = new Intent(SearchActivity.this, ReviewActivity.class);
-        reviewIntent.putExtra(Intent.EXTRA_TEXT, username);
-        startActivity(reviewIntent );
+        reviewIntent.putExtra("USERNAME", username);
+        startActivity(reviewIntent);
     }
 
 }
