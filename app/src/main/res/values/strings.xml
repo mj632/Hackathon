@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">SafeHomeSearch</string>
+    <string name="app_title">Safe Home Search</string>
     <string name="title_activity_maps">Map</string>
+    <string name="positives_title">Positvies</string>
+    <string name="negatives_title">Negatives</string>
+    <string name="user_reviews_title">User Reviews</string>
+    <string name="dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae risus semper, molestie tellus vitae, vehicula nisi. Vestibulum sagittis lectus augue, at venenatis eros blandit id. Suspendisse convallis mi ut posuere rhoncus. Donec ac hendrerit arcu. Vestibulum non lacinia mauris, nec ultricies urna. Praesent sodales libero quis quam volutpat, dapibus convallis lectus condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis gravida id metus sit amet pretium. Aenean quam libero, posuere vitae libero mattis, rutrum condimentum ipsum</string>
 </resources>
