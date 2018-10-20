@@ -17,29 +17,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".SplashScreenActivity" android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".SplashScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
             android:parentActivityName=".SearchActivity" />
-        <activity android:name=".SafeHomeDetails"
+        <activity
+            android:name=".SafeHomeDetailsActivity"
             android:label="SafeHomeDetails"
-            android:parentActivityName=".MapsActivity"/>
-        <activity android:name=".SearchActivity">
-
-        </activity>
+            android:parentActivityName=".MapsActivity" />
+        <activity android:name=".SearchActivity"></activity>
+        <activity
+            android:name=".AboutAppActivity"
+            android:label="@string/title_activity_about_app"></activity>
     </application>
 
 </manifest>
