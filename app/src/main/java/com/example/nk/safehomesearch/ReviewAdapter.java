@@ -38,6 +38,9 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.upload_image_row, parent, false);
+        view.setOnClickListener(reviewActivity);
+        view.setOnLongClickListener(reviewActivity);
+
         final ViewHolder mViewHolder = new ViewHolder(view);
 
 
@@ -46,18 +49,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        if(listOfImages.size()==0){
-            viewHolder.imageView.setImageResource(R.drawable.add_image_icon);
-        } else{
             viewHolder.imageView.setImageURI(listOfImages.get(position));
-        }
-
-        viewHolder.mConstraintLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                reviewActivity.uploadNewImage();
-            }
-        });
 
     }
 
@@ -65,6 +57,4 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     public int getItemCount() {
         return listOfImages.size();
     }
-
-
 }
