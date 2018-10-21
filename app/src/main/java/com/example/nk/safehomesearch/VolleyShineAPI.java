@@ -14,12 +14,12 @@ import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONObject;
 
-public class VolleyNetwork {
+public class VolleyShineAPI {
 
     private Context mContext;
-    private static final String TAG = "VolleyNetwork";
+    private static final String TAG = "VolleyShineAPI";
 
-    public VolleyNetwork(Context context) {
+    public VolleyShineAPI(Context context) {
         mContext = context;
     }
 
@@ -27,7 +27,7 @@ public class VolleyNetwork {
 
 
         RequestQueue queue = Volley.newRequestQueue(mContext);
-        String url = "https://apis.solarialabs.com/shine/v1/total-home-scores/reports?lat=" + latLng.latitude + "&lon=" + latLng.longitude + "&apikey=RPy6VypsIXX6cZUC3yS4MIandJMKKN5I";
+        String url = "https://apis.solarialabs.com/shine/v1/total-home-scores/reports?lat=" + latLng.latitude + "&lon=" + latLng.longitude + "&apikey=KRCvKeiZqh9GnR9npxNq4kysV7jiaeC0";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {

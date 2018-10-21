@@ -6,25 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterManager;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,17 +21,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private List<LatLng> mLocationsList = new ArrayList<>();
-    private VolleyNetwork volleyNetwork;
+    private VolleyShineAPI volleyNetwork;
     private ClusterManager<MarkerItem> mClusterManager;
     private static final String TAG = "MapsActivity";
     private MarkerItem clickedMarkerItem;
+    private List<MarkerItem> mMarkerItemList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        volleyNetwork = new VolleyNetwork(this);
+        volleyNetwork = new VolleyShineAPI(this);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -51,29 +41,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        /*boolean success = googleMap.setMapStyle(
-                MapStyleOptions.loadRawResourceStyle(
-                        this, R.raw.map_style));*/
         mMap = googleMap;
         setUpClusterer();
-        /*LatLng position = new LatLng(mLocationsList.get(0).latitude, mLocationsList.get(0).longitude);
-        for (int i = 0; i < mLocationsList.size(); i++) {
-            position = mLocationsList.get(i);
-            googleMap.addMarker(new MarkerOptions()
-                    .position(position)
-                    .title("Position")
-                    .snippet("Latitude:" + mLocationsList.get(i).latitude + ",Longitude:" + mLocationsList.get(i).longitude)
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_green)));
-        }
-        CameraUpdate location = CameraUpdateFactory.newLatLngZoom(
-                position, 13);
-        mMap.animateCamera(location);
-        mMap.setOnInfoWindowClickListener(this);*/
-
     }
 
 
     private void setUpClusterer() {
+
+        LoadMapMarkers loadMapMarkers = new LoadMapMarkers(this);
+        loadMapMarkers.execute();
+    }
+
+    public void getMapMarkers(List<MarkerItem> mapItemList) {
+        mMarkerItemList = mapItemList;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(43.837617, -84.862918), 6));
 
         mClusterManager = new ClusterManager<MarkerItem>(this, mMap);
@@ -96,15 +76,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 });
 
         mMap.setOnInfoWindowClickListener(this);
-
-        LoadMapMarkers loadMapMarkers = new LoadMapMarkers(this);
-        loadMapMarkers.execute();
+        for (int i = 0; i < mapItemList.size(); i++) {
+            callReverseGeocode(i, mapItemList.get(i).getPosition());
+        }
     }
 
-    public void getMapMarkers(List<MarkerItem> mapItemList) {
-        for (int i = 0; i < mapItemList.size(); i++) {
-            mClusterManager.addItem(mapItemList.get(i));
-        }
+    public void getAddress(int position, String address) {
+        Log.d(TAG, "getAddress: Updating map");
+        MarkerItem markerItem = mMarkerItemList.get(position);
+        markerItem.setTitle("Address:");
+        markerItem.setSnippet(address);
+        mClusterManager.addItem(markerItem);
+        mMap.moveCamera( CameraUpdateFactory.zoomTo(6.5f));
     }
 
     @Override
@@ -141,4 +124,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return null;
         }
     }
+
+    private void callReverseGeocode(int position, LatLng latLng) {
+        VolleyGeocodeAPI volleyGeocodeAPI = new VolleyGeocodeAPI(this);
+        volleyGeocodeAPI.makeRequest(position, latLng);
+    }
+
 }

@@ -9,4 +9,7 @@ public class AppConstants {
     public static String JSON_ENTERTAINTMENT = "entertainment";
 
     public static String SAFE_HOME_INTENT = "SafeHomeDetails";
+
+    public static String GOOGLE_REVERSE_GEOCODE_URL = "https://maps.googleapis.com/maps/api/geocode/json?latlng=";
+    public static String GOOGLE_REVERSE_GEOCODE_URL_TRAILING = "&key=";
 }
