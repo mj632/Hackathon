@@ -11,11 +11,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Enter ZIP Code"
+        android:hint="@string/search_text"
+        android:gravity="right"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,35 +30,28 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
         android:onClick="goToReviewPage"
-        android:text="Give us your feedback"
-        android:textColor="@color/colorText"
+        android:text="Submit a Review"
+        android:textColor="@color/colorAccent"
+        android:textStyle="italic"
         android:theme="@style/AppTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBtn" />
 
     <Button
         android:id="@+id/feedbackNavigationBtn2"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:onClick="goToLogin"
-        android:text="Login"
-        android:textColor="@color/colorText"
-        android:theme="@style/AppTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Sign In with Facebook"
+        android:textColor="@color/colorAccent"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/feedbackNavigationBtn" />
 
     <android.support.constraint.Guideline
@@ -65,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <Button
         android:id="@+id/searchBtn"
@@ -74,11 +68,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_corners_background"
         android:onClick="searchInArea"
+        android:paddingLeft="64dp"
+        android:paddingRight="64dp"
         android:text="Search"
         android:textColor="@color/colorText"
         app:layout_constraintEnd_toEndOf="@+id/addressBox"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/addressBox"
         app:layout_constraintTop_toBottomOf="@+id/addressBox" />
+
 </android.support.constraint.ConstraintLayout>

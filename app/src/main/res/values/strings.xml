@@ -13,4 +13,5 @@
     <string name="safety_text">Ensure safety before renting, buying or staying for a few nights in a neighbourhood</string>
     <string name="weigh_text">Weigh Pros and Cons before you move into a neighbourhood</string>
     <string name="review_text"> Submit review and photos for places</string>
+    <string name="search_text">Enter zip code/address to find safety score</string>
 </resources>
