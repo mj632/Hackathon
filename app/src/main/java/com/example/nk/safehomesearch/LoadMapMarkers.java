@@ -39,9 +39,9 @@ public class LoadMapMarkers extends AsyncTask<String, Void, List<MarkerItem>> {
                 lng = jsonObject.getDouble("lon");
                 double offset = i / 60d;
                 MarkerItem offsetItem = new MarkerItem();
+                offsetItem.setLatLng(new LatLng(lat, lng));
                 lat = lat + offset;
                 lng = lng + offset;
-                offsetItem.setLatLng(new LatLng(lat, lng));
                 offsetItem.setType(i % 3);
                 mMapItemList.add(offsetItem);
             }

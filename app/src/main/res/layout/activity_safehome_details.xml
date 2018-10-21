@@ -18,7 +18,7 @@
             android:scrollbars="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
         </android.support.v7.widget.RecyclerView>
 
@@ -86,11 +86,34 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="16dp"
             android:text="@string/dummy_text"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/userReviewTitle" />
+
+        <Button
+            android:id="@+id/feedbackNavigationBtn"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="goToFeedbackActivity"
+            android:text="Want to give feedback?"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textStyle="italic"
+            android:theme="@style/AppTheme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userReviewDescription"
+            app:layout_constraintVertical_bias="1.0" />
+
 
         <TextView
             android:id="@+id/safetyReviewTextView"
@@ -105,23 +128,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/my_recycler_view" />
 
-        <Button
-            android:id="@+id/feedbackNavigationBtn"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="8dp"
-            android:onClick="goToFeedbackActivity"
-            android:text="Want to give feedback?"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textStyle="italic"
-            android:theme="@style/AppTheme"
-            app:layout_constraintBottom_toBottomOf="@+id/userReviewTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/userReviewTitle"
-            app:layout_constraintTop_toTopOf="@+id/userReviewTitle" />
+
     </android.support.constraint.ConstraintLayout>
 
 
