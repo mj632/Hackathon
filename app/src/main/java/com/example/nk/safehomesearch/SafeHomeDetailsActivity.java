@@ -53,7 +53,7 @@ public class SafeHomeDetailsActivity extends AppCompatActivity {
 
         //----get data from mongoDB server
         //----get userId from parent page
-        mongoDBHelper = new MongoDBHelper();
+        mongoDBHelper = new MongoDBHelper(this);
         ArrayList<String> reviews = mongoDBHelper.viewReviews(41.93594856,-87.5444032);
 
         Intent intent = getIntent();
@@ -64,7 +64,8 @@ public class SafeHomeDetailsActivity extends AppCompatActivity {
         }
         getAllReviewsFromDB();          // try to pput it in asyncTask
         if(reviewsList.size() <= 0){
-            mUserReviews.setText("Be the first to provide a review \nfor the location.");
+            mUserReviews.setText("Be the first to provide a review for the location.");
+            mUserReviews.setTextColor(getResources().getColor(android.R.color.black));
         }
 
         if (safeHomeDetail.getSafeScore() >= 70) {

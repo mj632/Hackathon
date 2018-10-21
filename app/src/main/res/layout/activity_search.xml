@@ -16,6 +16,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/search_text"
+        android:text="60616"
         android:gravity="right"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline"

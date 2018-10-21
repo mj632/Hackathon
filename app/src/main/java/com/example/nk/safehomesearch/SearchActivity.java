@@ -74,7 +74,6 @@ public class SearchActivity extends AppCompatActivity {
         reviewIntent.putExtra("USER_ID", userID);
         startActivity(reviewIntent);
     }
-//============================================================================
 
     public void goToLogin(View v){
         /*Intent loginIntent = new Intent(SearchActivity.this, LoginActivity.class);

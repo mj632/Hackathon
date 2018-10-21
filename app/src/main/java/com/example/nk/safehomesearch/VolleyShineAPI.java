@@ -56,11 +56,21 @@ public class VolleyShineAPI {
             JSONObject jsonObject = new JSONObject(response);
             JSONObject totalScoreJSONObject = jsonObject.getJSONObject(AppConstants.JSON_TOTALSCORE);
             SafeHomeDetail safeHomeDetail = new SafeHomeDetail();
-            safeHomeDetail.setSafeScore(totalScoreJSONObject.getJSONObject(AppConstants.JSON_SAFE).getDouble("value"));
-            safeHomeDetail.setQuietScore(totalScoreJSONObject.getJSONObject(AppConstants.JSON_QUIET).getDouble("value"));
-            safeHomeDetail.setTrafficScore(totalScoreJSONObject.getJSONObject(AppConstants.JSON_TRAFFIC).getDouble("value"));
-            safeHomeDetail.setErrandScore(totalScoreJSONObject.getJSONObject(AppConstants.JSON_ERRAND).getDouble("value"));
-            safeHomeDetail.setEntertainmentScore(totalScoreJSONObject.getJSONObject(AppConstants.JSON_ENTERTAINTMENT).getDouble("value"));
+            if(totalScoreJSONObject.has(AppConstants.JSON_SAFE)) {
+                safeHomeDetail.setSafeScore(totalScoreJSONObject.getJSONObject(AppConstants.JSON_SAFE).getDouble("value"));
+            }
+            if(totalScoreJSONObject.has(AppConstants.JSON_QUIET)) {
+                safeHomeDetail.setQuietScore(totalScoreJSONObject.getJSONObject(AppConstants.JSON_QUIET).getDouble("value"));
+            }
+            if(totalScoreJSONObject.has(AppConstants.JSON_TRAFFIC)) {
+                safeHomeDetail.setTrafficScore(totalScoreJSONObject.getJSONObject(AppConstants.JSON_TRAFFIC).getDouble("value"));
+            }
+            if(totalScoreJSONObject.has(AppConstants.JSON_ERRAND)) {
+                safeHomeDetail.setErrandScore(totalScoreJSONObject.getJSONObject(AppConstants.JSON_ERRAND).getDouble("value"));
+            }
+            if(totalScoreJSONObject.has(AppConstants.JSON_ENTERTAINTMENT)) {
+                safeHomeDetail.setEntertainmentScore(totalScoreJSONObject.getJSONObject(AppConstants.JSON_ENTERTAINTMENT).getDouble("value"));
+            }
             return safeHomeDetail;
         } catch (Exception e) {
             e.printStackTrace();

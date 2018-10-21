@@ -40,6 +40,9 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         } else {
             userId = "5bcb996a3e0e0b9d27d34e70";
         }
+        if(userId == "" || userId.isEmpty() || userId == null){
+            userId = "5bcb996a3e0e0b9d27d34e70";
+        }
 
         mAdapter = new ReviewAdapter(listOfImages, this);
         imgUploadRecyclerView.setAdapter(mAdapter);

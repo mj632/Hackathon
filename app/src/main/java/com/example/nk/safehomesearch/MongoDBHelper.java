@@ -115,6 +115,7 @@ public class MongoDBHelper {
                     reviewActivity.goBackTOParent();
                 } else{
                     Log.e(TAG, "Error adding item", task.getException());
+                    reviewActivity.goBackTOParent();
                 }
             }
         });
