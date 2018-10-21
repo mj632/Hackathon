@@ -14,4 +14,6 @@
     <string name="weigh_text">Weigh Pros and Cons before you move into a neighbourhood</string>
     <string name="review_text"> Submit review and photos for places</string>
     <string name="search_text">Enter zip code/address to find safety score</string>
+    <string name="facebook_app_id">295454931289613</string>
+    <string name="fb_login_protocol_scheme">fb295454931289613</string>
 </resources>

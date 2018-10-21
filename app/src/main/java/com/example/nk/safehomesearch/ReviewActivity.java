@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,25 +21,30 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     private RecyclerView imgUploadRecyclerView;
     private ReviewAdapter mAdapter;
     private List<Uri> listOfImages = new ArrayList<>();
+    private String userId = "";
+    private EditText reviewTitle;
+    private MongoDBHelper mongoDBHelper;
 //    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
-
+        reviewTitle = findViewById(R.id.reviewTitle);
         imgUploadRecyclerView = (RecyclerView) findViewById(R.id.imgUploadRecyclerView);
 
         Intent intent = getIntent();
-        if (intent.hasExtra("USERNAME")) {
-            String text = intent.getStringExtra("USERNAME").toString();
-            Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        if (intent.hasExtra("USER_ID")) {
+            userId = intent.getStringExtra("USER_ID").toString();
+//            Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        } else {
+            userId = "5bcb996a3e0e0b9d27d34e70";
         }
 
         mAdapter = new ReviewAdapter(listOfImages, this);
         imgUploadRecyclerView.setAdapter(mAdapter);
         imgUploadRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        mongoDBHelper = new MongoDBHelper(this);
     }
 
     public void uploadNewImage(View v){
@@ -59,7 +65,6 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
             }
         } else {
         }
-
     }
 
     @Override
@@ -70,5 +75,21 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public boolean onLongClick(View v) {
         return false;
+    }
+
+    public void onSubmitReview(View v){
+//        String review = reviewTitle.getText().toString();
+        ArrayList<String> review = new ArrayList<>();
+        review.add(reviewTitle.getText().toString());
+        mongoDBHelper.insertMoreReviews(41.93594856,-87.5444032,review, userId);
+        
+    }
+
+    public void goBackTOParent(){
+        reviewTitle.setText("");
+        Intent searchIntent = new Intent(ReviewActivity.this, SearchActivity.class);
+//                    searchIntent .putExtra("USER_ID", userID);
+        finish();
+
     }
 }
